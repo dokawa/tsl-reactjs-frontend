@@ -12,8 +12,8 @@ class LoginRequest extends Component {
         let data; 
 
         let params = {
-            username: '3',
-            password: '3'
+            username: this.props.username,
+            password: this.props.password
         }
   
         axios.post("http://localhost:8000/token/", params) 

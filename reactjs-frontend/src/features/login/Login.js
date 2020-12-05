@@ -16,7 +16,7 @@ export function Login() {
   return (
     <div>
       <div className={styles.row}>
-        <LoginRequest/>
+        <LoginRequest username = '3' password = '3' />
         <button
           className={styles.button}
           aria-label="Login"
