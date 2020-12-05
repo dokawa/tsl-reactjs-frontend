@@ -6,29 +6,24 @@ import {
   selectLoginState,
 } from './loginSlice';
 import styles from './Login.module.css';
-import LoginRequest from './LoginRequest'
+import { LoginRequest } from './loginRequest'
 
 export function Login() {
   const loginState = useSelector(selectLoginState);
   const dispatch = useDispatch();
-  const [login, logout] = useState(false);
 
   return (
     <div>
       <div className={styles.row}>
-        <LoginRequest username = '3' password = '3' />
-        <button
-          className={styles.button}
-          aria-label="Login"
-          onClick={() => 
-            {
-              dispatch(login());
-              
-            }
-          }
-          >
-          +
-        </button>
+      
+        <input
+          type="text"
+          id="postTitle"
+          name="postTitle"
+          value="password"
+        />
+
+        <LoginRequest username='3' password='3'/>
         <span className={styles.value}>{loginState}</span>
         <button
           className={styles.button}

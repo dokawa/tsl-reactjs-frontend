@@ -1,37 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
+import { useDispatch  } from 'react-redux';
 import axios from "axios";
+import {
+  login,
+  logout,
+  selectToken,
+  setToken,
+} from './loginSlice';
 
 
-class LoginRequest extends Component {
+export function LoginRequest(props) {
 
-    state = { 
-        details: [], 
-    }; 
-
-    componentDidMount() { 
-        let data; 
-
-        let params = {
-            username: this.props.username,
-            password: this.props.password
-        }
-  
-        axios.post("http://localhost:8000/token/", params) 
-            .then((res) => { 
-                data = res.data;
-                this.setState({ 
-                    details: data['token'], 
-                });
-            }) 
-            .catch((err) => {}); 
+    let params = {
+        username: props.username,
+        password: props.password
     }
 
-    render() {
-        console.log(this.state.details);
-        return(<div></div>);
-    }
+    const dispatch = useDispatch();
+
+    const sendRequest = () => { axios.post("http://localhost:8000/token/", params) 
+        .then((res) => { 
+            let data = res.data;
+            dispatch(setToken(data['token']));
+            console.log(data);
+        }) 
+        .catch((err) => {}) }
 
 
+
+    return (
+      <input type="button" onClick={sendRequest} />
+    )
+   
 }
-
-export default LoginRequest;
