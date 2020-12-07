@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { selectToken } from '../login/loginSlice';
+import './PostList.css';
 import axios from "axios";
 
 export const PostsList = () => {

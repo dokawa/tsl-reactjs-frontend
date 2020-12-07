@@ -4,6 +4,7 @@ import { AddPostForm } from './features/posts/AddPostForm';
 import { useSelector } from 'react-redux';
 import { Login } from './features/login/Login';
 import { Route } from "react-router";
+import { Navbar } from './navbar/Navbar';
 import {
   selectLoginState,
 } from './features/login/loginSlice';
@@ -17,6 +18,7 @@ export const RouterManager:React.FC = () => {
             <Guard>
               <Route exact path="/" render={() => (
                   <React.Fragment>
+                    <Navbar/>
                     <AddPostForm/>
                     <PostsList/>
                   </React.Fragment>

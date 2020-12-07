@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import {
   selectToken,
 } from '../login/loginSlice';
+import './PostList.css';
 import axios from "axios";
 
 type Params = {
