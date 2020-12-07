@@ -39,14 +39,6 @@ export const AddPostForm:React.FC = () => {
     <section>
       <h2>Add a New Post</h2>
       <form>
-        <label htmlFor="postTitle">Post Title:</label>
-        <input
-          type="text"
-          id="postTitle"
-          name="postTitle"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
         <label htmlFor="postContent">Content:</label>
         <textarea
           id="postContent"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../login/loginSlice';
 import './PostList.css';
@@ -30,9 +30,10 @@ export const PostsList = () => {
     }) 
     .catch((err) => {}) }
 
+    useEffect(() => { sendRequest() }, [])
+
 
   const renderedPosts = () => {
-    sendRequest();
     return(posts.map(post => (
       <article className="post-excerpt" key={post.id}>
         <h3>{post.owner}</h3>
@@ -40,6 +41,8 @@ export const PostsList = () => {
       </article>
     )))
   }
+
+
 
   return (
     <section className="posts-list">

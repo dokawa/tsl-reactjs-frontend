@@ -1,5 +1,12 @@
+:root {
+  background-image: url("./wall.jpg");
+  background-size: cover;
+}
+
 .App {
   text-align: center;
+  width: 50rem;
+  margin: auto;
 }
 
 .App-logo {
