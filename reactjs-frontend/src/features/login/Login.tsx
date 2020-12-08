@@ -99,7 +99,7 @@ export function Login() {
 
         <button type="button" onClick={sendRequest}>Login</button>
         <button type="button" onClick={gotoRegisterPage}>Register</button>
-        <button type="button" onClick={gotoRegisterAsGuestPage}>Register as guest</button>
+        <button type="button" onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
         <text>{ renderErrorMessage() }</text>
 
       </div>
