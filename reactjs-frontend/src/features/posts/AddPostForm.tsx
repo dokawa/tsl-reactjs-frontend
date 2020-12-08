@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import {
-  selectToken,
-} from '../login/loginSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import './PostList.css';
 import axios from "axios";
+import {
+  addPost,
+} from './postsSlice';
+import { getToken } from '../login/TokenStorage';
 
 type Params = {
   token: String; 
@@ -12,9 +13,9 @@ type Params = {
 }
 
 export const AddPostForm:React.FC = () => {
-  const token = useSelector(selectToken);
+  const token = getToken()
+  const dispatch = useDispatch();
 
-  const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
   const postMessage = () => { axios.post("http://localhost:8000/", {   
@@ -25,14 +26,16 @@ export const AddPostForm:React.FC = () => {
       'Authorization': `Token ${token}` 
       }
     }
-  ) 
-
-    .then((res) => { 
+  ).then((res) => { 
         let data = res.data;
+        dispatch(addPost(data))
         console.log('token' + token)
         console.log(data);
+
     }) 
-    .catch((err) => {}) 
+    .catch((err) => {
+        console.log(err)
+    }) 
   }
 
   return (

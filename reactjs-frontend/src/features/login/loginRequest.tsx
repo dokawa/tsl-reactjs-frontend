@@ -36,7 +36,7 @@ export function LoginRequest(credentials: Credentials) {
         .catch((err) => {}) }
 
     return (
-      <input type="button" onClick={sendRequest} />
+      <button type="button" onClick={sendRequest}>Login</button>
     )
    
 }

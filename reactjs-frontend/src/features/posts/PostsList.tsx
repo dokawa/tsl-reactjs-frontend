@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectToken } from '../login/loginSlice';
+import React, { useRef, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './PostList.css';
 import axios from "axios";
+import { setPosts, selectPosts } from '../posts/postsSlice';
+import { getToken } from '../login/TokenStorage';
+
 
 export const PostsList = () => {
   // const posts:any[] = [];
 
   type Post = {
-      id: 0,
-      message: '',
-      owner: ''
+    id: 0,
+    message: '',
+    owner: ''
   }
 
-  const [posts, setPosts]:[Post[], any] = useState([])
-  const token = useSelector(selectToken);
+  const token = getToken();
 
+  const dispatch = useDispatch();
 
   const sendRequest = () => { axios.get("http://localhost:8000/", 
     {
@@ -25,12 +27,14 @@ export const PostsList = () => {
     }) 
     .then((res) => { 
         let data = res.data;
-        setPosts(data['results']);
+        dispatch(setPosts(data['results']));
         console.log(data);
     }) 
     .catch((err) => {}) }
 
-    useEffect(() => { sendRequest() }, [])
+
+  useEffect(() => { sendRequest() }, [])
+  const posts = useSelector(selectPosts);
 
 
   const renderedPosts = () => {
@@ -41,6 +45,18 @@ export const PostsList = () => {
       </article>
     )))
   }
+
+  // const listInnerRef = useRef();
+
+  // const onScroll = () => {
+  //   if (listInnerRef.current) {
+  //     const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+  //     if (scrollTop + clientHeight === scrollHeight) {
+  //       // TO SOMETHING HERE
+  //       console.log('Reached bottom')
+  //     }
+  //   }
+  // };
 
 
 
