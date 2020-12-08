@@ -10,7 +10,7 @@ export function Login() {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState([''])
 
   const gotoRegisterPage = () => {
     history.push('/register');
@@ -41,9 +41,40 @@ export function Login() {
     })
     .catch((error) => { 
       if (error.response) {
-        setErrorMessage(Object.values<string[]>(error.response.data)[0][0]);
+        let error_message:string[] = [];
+        // console.log(error.response.data)
+
+        Object.keys(error.response.data).map((key) => {
+          let message;
+          let field:string = key;
+          if (field == 'non_field_errors') 
+            message = error.response.data[key][0];
+          else {
+            // let message_value = entry[1].slice(0, -1)[0];
+            // let message_value = ;
+            message = capitalize(field) + ": " + uncapitalize(error.response.data[key][0]).slice(0, -1);
+          }
+          error_message.push(message);
+        })
+        setErrorMessage(error_message)
       }
     })
+  }
+
+  const capitalize = (text: string) => {
+    return  text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  const uncapitalize = (text:string) => {
+    return  text.charAt(0).toLowerCase() + text.slice(1);
+  }
+
+  const renderErrorMessage = () => {
+    console.log(errorMessage)
+    return (errorMessage.map ((error, i) => 
+        <div key={i}>{ error }</div>
+    )
+    )
   }
 
   return (
@@ -52,25 +83,25 @@ export function Login() {
 
         <input
           type="text"
-          id="postTitle"
-          name="postTitle"
+          id="username"
+          name="username"
+          placeholder="username"
           onChange={e => setUsername(e.target.value)}
         />
 
         <input
-          type="text"
-          id="postTitle"
-          name="postTitle"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
           onChange={e => setPassword(e.target.value)}
         />
 
-        {/* <LoginRequest username= {username} password={password}/> */}
         <button type="button" onClick={sendRequest}>Login</button>
         <button type="button" onClick={gotoRegisterPage}>Register</button>
         <button type="button" onClick={gotoRegisterAsGuestPage}>Register as guest</button>
-        { errorMessage }
+        <text>{ renderErrorMessage() }</text>
 
-        {/* <span className={styles.value}>{loginState}</span> */}
       </div>
 
     </div>

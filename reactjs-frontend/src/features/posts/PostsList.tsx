@@ -41,7 +41,7 @@ export const PostsList = () => {
     return(posts.map(post => (
       <article className="post-excerpt" key={post.id}>
         <h3>{post.owner}</h3>
-        <p className="post-content">{post.message.substring(0, 100)}</p>
+        <p className="post-content">{post.message}</p>
       </article>
     )))
   }
