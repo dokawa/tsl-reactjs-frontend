@@ -1,11 +1,7 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
 import { setToken, getToken, destroyToken } from './TokenStorage';
 import { Redirect } from "react-router";
-import {
-  selectLoginState,
-} from './loginSlice';
 
 export const Guard:React.FC = (props) => {
     // const loginState = useSelector(selectLoginState);

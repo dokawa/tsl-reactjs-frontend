@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './PostList.css';
 import axios from "axios";
@@ -7,7 +7,6 @@ import { getToken } from '../login/TokenStorage';
 
 
 export const PostsList = () => {
-  // const posts:any[] = [];
 
   type Post = {
     id: 0,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './PostList.css';
 import axios from "axios";
 import {
@@ -7,10 +7,10 @@ import {
 } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
 
-type Params = {
-  token: String; 
-  message: String;
-}
+// type Params = {
+//   token: String; 
+//   message: String;
+// }
 
 export const AddPostForm:React.FC = () => {
   const token = getToken()

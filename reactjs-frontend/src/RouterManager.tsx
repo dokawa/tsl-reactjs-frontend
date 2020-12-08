@@ -8,9 +8,6 @@ import { Route } from "react-router";
 import { Navbar } from './navbar/Navbar';
 import { Register } from './features/login/Register';
 import { RegisterAsGuest } from './features/login/RegisterAsGuest';
-import {
-  selectLoginState,
-} from './features/login/loginSlice';
 import { Guard } from './features/login/Guard';
 
 export const RouterManager:React.FC = () => {
