@@ -10,6 +10,7 @@ export function Login() {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const gotoRegisterPage = () => {
     history.push('/register');
@@ -38,7 +39,11 @@ export function Login() {
       history.push('/')
       console.log(data);
     })
-    .catch((err) => { })
+    .catch((error) => { 
+      if (error.response) {
+        setErrorMessage(Object.values<string[]>(error.response.data)[0][0]);
+      }
+    })
   }
 
   return (
@@ -63,6 +68,7 @@ export function Login() {
         <button type="button" onClick={sendRequest}>Login</button>
         <button type="button" onClick={gotoRegisterPage}>Register</button>
         <button type="button" onClick={gotoRegisterAsGuestPage}>Register as guest</button>
+        { errorMessage }
 
         {/* <span className={styles.value}>{loginState}</span> */}
       </div>
