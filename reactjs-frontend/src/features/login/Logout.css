@@ -1,0 +1,10 @@
+.button-container {
+    display: flex;
+    justify-content: right;    
+    margin: 0.5rem;
+}
+
+.logout-button {
+    width: 4rem;
+    cursor: default;
+}

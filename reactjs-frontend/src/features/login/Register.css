@@ -1,0 +1,12 @@
+.names {
+    display: inline-flex;
+    width: 100%;
+}
+
+#first_name {
+    margin-right: 0.1rem;
+}
+
+#second_name {
+    margin-right: 0.1rem;
+}
