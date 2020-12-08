@@ -37,9 +37,9 @@ export function Login() {
       let data = res.data;
       setToken(data['token']);
       history.push('/')
-      console.log(data);
     })
     .catch((error) => { 
+      console.log('hue');
       if (error.response) {
         let error_message:string[] = [];
         // console.log(error.response.data)
@@ -70,7 +70,6 @@ export function Login() {
   }
 
   const renderErrorMessage = () => {
-    console.log(errorMessage)
     return (errorMessage.map ((error, i) => 
         <div key={i}>{ error }</div>
     )
@@ -98,9 +97,9 @@ export function Login() {
         />
 
         <button type="button" onClick={sendRequest}>Login</button>
-        <button type="button" onClick={gotoRegisterPage}>Register</button>
+        <button type="button" onClick={gotoRegisterPage}>Sign up</button>
         <button type="button" onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
-        <text>{ renderErrorMessage() }</text>
+        <p>{ renderErrorMessage() }</p>
 
       </div>
 

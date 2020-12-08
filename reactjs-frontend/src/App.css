@@ -4,9 +4,9 @@
 }
 
 .App {
-  text-align: center;
   width: 50rem;
   margin: auto;
+  background-color:white;
 }
 
 .App-logo {

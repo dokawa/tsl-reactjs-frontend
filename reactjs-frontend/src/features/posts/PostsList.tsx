@@ -39,8 +39,8 @@ export const PostsList = () => {
   const renderedPosts = () => {
     return(posts.map(post => (
       <article className="post-excerpt" key={post.id}>
-        <h3>{post.owner}</h3>
-        <p className="post-content">{post.message}</p>
+        <div className="post-username">{post.owner}</div>
+        <div className="post-content">{post.message}</div>
       </article>
     )))
   }
@@ -61,7 +61,6 @@ export const PostsList = () => {
 
   return (
     <section className="posts-list">
-      <h2>Posts</h2>
       { renderedPosts() }
     </section>
   )

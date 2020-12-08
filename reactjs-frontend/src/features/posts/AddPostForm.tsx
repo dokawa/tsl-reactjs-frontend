@@ -6,6 +6,7 @@ import {
   addPost,
 } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
+import './AddPostForm.css'
 
 // type Params = {
 //   token: String; 
@@ -39,19 +40,15 @@ export const AddPostForm:React.FC = () => {
   }
 
   return (
-    <section>
-      <h2>Add a New Post</h2>
-      <form>
-        <label htmlFor="postContent">Content:</label>
+    <div className="post_form">
         <textarea
-          id="postContent"
-          name="postContent"
+          className="post_content"
+          name="post_content"
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <button type="button" onClick= { postMessage }>Save Post</button>
-      </form>
-    </section>
+        <button className="post_button" onClick= { postMessage }>Post</button>
+    </div>
   )
 }
 
