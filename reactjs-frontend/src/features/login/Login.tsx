@@ -70,6 +70,10 @@ export function Login() {
     )
   }
 
+  // const updateErrorMessage = () => {
+  //   setErrorMessage(['hue', 'br'])
+  // }
+
   return (
     <div>
       <div className={styles.row}>
@@ -90,10 +94,11 @@ export function Login() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button type="button" onClick={sendRequest}>Login</button>
-        <button type="button" onClick={gotoRegisterPage}>Sign up</button>
-        <button type="button" onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
-        <p>{ renderErrorMessage() }</p>
+        <button className= "login-button" type="button" onClick={sendRequest}>Login</button>
+        {/* <button className= "login-button" type="button" onClick={updateErrorMessage}>Login</button> */}
+        <button className= "register-button" type="button" onClick={gotoRegisterPage}>Sign up</button>
+        <button className= "register-guest-button" type="button" onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
+        <div className= "error-text">{ renderErrorMessage() }</div>
 
       </div>
 

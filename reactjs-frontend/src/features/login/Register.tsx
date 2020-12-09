@@ -17,12 +17,14 @@ export function Register() {
 
     const registerRequest = () => {
         axios.post("http://localhost:8000/register/", params)
-        .then((res) => {
-            let data = res.data;
-            history.push('/login');
-            console.log(data);
-        })
-        .catch((err) => { })
+            .then((res) => {
+                let data = res.data;
+                history.push('/login');
+                console.log(data);
+            })
+            .catch((error) => { 
+                console.log(error.response)
+            })
     }
 
     let params = {
@@ -80,7 +82,7 @@ export function Register() {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <button type="button" onClick={registerRequest}>Sign up</button>
+                <button className="register-button" type="button" onClick={registerRequest}>Sign up</button>
 
             </div>
 

@@ -18,7 +18,9 @@ export function RegisterAsGuest() {
       history.push('/login');
       console.log(data);
   }) 
-  .catch((err) => {}) }
+  .catch((error) => {
+    console.log(error.response)
+  }) }
 
   let params = {
     username: username,
@@ -55,9 +57,8 @@ export function RegisterAsGuest() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button type="button" onClick= { registerRequest }>Register as guest</button>
+        <button className="register-button" type="button" onClick= { registerRequest }>Register as guest</button>
 
-        {/* <span className={styles.value}>{loginState}</span> */}
       </div>
         
     </div>
