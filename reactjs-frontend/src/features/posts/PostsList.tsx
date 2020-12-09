@@ -43,6 +43,13 @@ export const PostsList = () => {
     )))
   }
 
+  
+  useEffect(() => { 
+    sendRequest(page) 
+    setPage(p => p + 1)
+  }, [])
+
+
   // const listInnerRef = useRef();
 
   // const onScroll = () => {
@@ -58,18 +65,14 @@ export const PostsList = () => {
 
   function fetchMoreListItems() {
     setTimeout(() => {
-      setPage(p => p + 1)
       sendRequest(page)
+      setPage(p => p + 1)
       setIsFetching(false);
     }, 2000);
   }
 
 
     
-  useEffect(() => { 
-    sendRequest(page) 
-    setPage(p => p + 1)
-  }, [page, sendRequest])
 
   const posts = useSelector(selectPosts);
 

@@ -48,7 +48,7 @@ export function Login() {
             message = capitalize(field) + ": " + uncapitalize(error.response.data[key][0]).slice(0, -1);
           }
           error_message.push(message);
-          return
+          return '';
         })
         setErrorMessage(error_message)
       }
