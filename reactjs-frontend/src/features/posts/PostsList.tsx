@@ -62,8 +62,6 @@ export const PostsList = () => {
   // };
 
 
-
-
   function fetchMoreListItems() {
     setTimeout(() => {
       setPage(page + 1)
@@ -85,7 +83,7 @@ export const PostsList = () => {
   return (
     <section className="posts-list">
       { renderedPosts() }
-      {isFetching && 'Fetching more list items...'}
+      {isFetching && 'Fetching more items...'}
     </section>
   )
 }
