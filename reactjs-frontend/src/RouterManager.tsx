@@ -1,7 +1,6 @@
 import React from 'react';
 import { PostsList } from './features/posts/PostsList';
 import { AddPostForm } from './features/posts/AddPostForm';
-import { useSelector } from 'react-redux';
 import { Login } from './features/login/Login';
 import { Logout } from './features/login/Logout';
 import { Route } from "react-router";
