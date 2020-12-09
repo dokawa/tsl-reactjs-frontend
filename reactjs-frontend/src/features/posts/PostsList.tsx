@@ -9,12 +9,6 @@ import useInfiniteScroll from "./useInfiniteScroll";
 
 export const PostsList = () => {
 
-  type Post = {
-    id: 0,
-    message: '',
-    owner: ''
-  }
-
   const token = getToken();
 
   const dispatch = useDispatch();
@@ -64,7 +58,7 @@ export const PostsList = () => {
 
   function fetchMoreListItems() {
     setTimeout(() => {
-      setPage(page + 1)
+      setPage(p => p + 1)
       sendRequest(page)
       setIsFetching(false);
     }, 2000);
@@ -74,8 +68,8 @@ export const PostsList = () => {
     
   useEffect(() => { 
     sendRequest(page) 
-    setPage(page + 1)
-  }, [])
+    setPage(p => p + 1)
+  }, [page, sendRequest])
 
   const posts = useSelector(selectPosts);
 

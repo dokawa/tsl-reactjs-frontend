@@ -20,12 +20,6 @@ export function Login() {
     history.push('/register-as-guest');
   }
 
-
-  type Credentials = {
-    username: String;
-    password: String;
-  }
-
   let params = {
     username: username,
     password: password
@@ -39,7 +33,6 @@ export function Login() {
       history.push('/')
     })
     .catch((error) => { 
-      console.log('hue');
       if (error.response) {
         let error_message:string[] = [];
         // console.log(error.response.data)
@@ -47,7 +40,7 @@ export function Login() {
         Object.keys(error.response.data).map((key) => {
           let message;
           let field:string = key;
-          if (field == 'non_field_errors') 
+          if (field === 'non_field_errors') 
             message = error.response.data[key][0];
           else {
             // let message_value = entry[1].slice(0, -1)[0];
@@ -55,6 +48,7 @@ export function Login() {
             message = capitalize(field) + ": " + uncapitalize(error.response.data[key][0]).slice(0, -1);
           }
           error_message.push(message);
+          return
         })
         setErrorMessage(error_message)
       }

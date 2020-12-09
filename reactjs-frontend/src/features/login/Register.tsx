@@ -4,11 +4,6 @@ import axios from "axios";
 import './Register.css';
 import styles from './Login.module.css';
 
-type UserInfo = {
-    username: String;
-    password: String;
-}
-
 export function Register() {
 
     const history = useHistory()
