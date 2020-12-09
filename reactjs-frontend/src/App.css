@@ -1,6 +1,6 @@
 :root {
   background-image: url("./wall.jpg");
-  background-size: cover;
+  background-size: initial;
 }
 
 .App {

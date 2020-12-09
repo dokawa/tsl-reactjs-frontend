@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <nav>
       <section>
-        <h1>TSL Wall</h1>
+        <h1>Wall App</h1>
 
         <div className="navContent">
           <div className="navLinks"></div>

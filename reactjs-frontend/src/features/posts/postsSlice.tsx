@@ -31,10 +31,13 @@ export const postsSlice = createSlice({
       var joined = [].concat(action.payload).concat(state.posts);
       state.posts = joined;
     },
+    addPosts: (state, action) => {
+      state.posts = state.posts.concat(action.payload)
+    }
   },
 });
 
-export const { setPosts, addPost } = postsSlice.actions;
+export const { setPosts, addPost, addPosts } = postsSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

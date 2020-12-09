@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './PostList.css';
 import axios from "axios";
-import { setPosts, selectPosts } from '../posts/postsSlice';
+import { selectPosts, addPosts } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
+import useInfiniteScroll from "./useInfiniteScroll";
 
 
 export const PostsList = () => {
@@ -18,7 +19,12 @@ export const PostsList = () => {
 
   const dispatch = useDispatch();
 
-  const sendRequest = () => { axios.get("http://localhost:8000/", 
+  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
+  let [page, setPage] = useState(1)
+
+
+
+  const sendRequest = (page: number) => { axios.get("http://localhost:8000/?page=" + page, 
     {
       headers: {
       'Authorization': `Token ${token}` 
@@ -26,14 +32,12 @@ export const PostsList = () => {
     }) 
     .then((res) => { 
         let data = res.data;
-        dispatch(setPosts(data['results']));
+        dispatch(addPosts(data['results']));
         console.log(data);
     }) 
     .catch((err) => {}) }
 
 
-  useEffect(() => { sendRequest() }, [])
-  const posts = useSelector(selectPosts);
 
 
   const renderedPosts = () => {
@@ -59,9 +63,29 @@ export const PostsList = () => {
 
 
 
+
+  function fetchMoreListItems() {
+    setTimeout(() => {
+      setPage(page + 1)
+      sendRequest(page)
+      setIsFetching(false);
+    }, 2000);
+  }
+
+
+    
+  useEffect(() => { 
+    sendRequest(page) 
+    setPage(page + 1)
+  }, [])
+
+  const posts = useSelector(selectPosts);
+
+
   return (
     <section className="posts-list">
       { renderedPosts() }
+      {isFetching && 'Fetching more list items...'}
     </section>
   )
 }
