@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
+import './Login.module.css';
 import { setToken } from './TokenStorage';
 import axios from "axios";
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
@@ -33,8 +34,11 @@ export function Login() {
         setToken(data['token']);
         history.push('/')
       })
-      .catch((error) => {
-        if (error.response) {
+      .catch((error) => {  
+        if (error.response == undefined) {
+          setErrorMessage([ 'Request failed: check your internet connection and try again' ])
+        }
+        else {
           setErrorMessage(parseErrorMessage(error.response.data))
         }
       })

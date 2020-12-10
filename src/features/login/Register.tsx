@@ -24,9 +24,12 @@ export function Register() {
                 history.push('/login');
             })
             .catch((error) => {
-                if (error.response) {
+                if (error.response == undefined) {
+                    setErrorMessage([ 'Request failed: check your internet connection and try again' ])
+                  }
+                  else {
                     setErrorMessage(parseErrorMessage(error.response.data))
-                }
+                  }
             })
     }
 

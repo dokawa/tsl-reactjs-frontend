@@ -20,7 +20,10 @@ export function RegisterAsGuest() {
       history.push('/login');
   }) 
   .catch((error) => {
-    if (error.response) {
+    if (error.response == undefined) {
+      setErrorMessage([ 'Request failed: check your internet connection and try again' ])
+    }
+    else {
       setErrorMessage(parseErrorMessage(error.response.data))
     }
   }) }
@@ -61,7 +64,7 @@ export function RegisterAsGuest() {
         />
 
         <button className="register-button" type="button" onClick= { registerRequest }>Register as guest</button>
-        <div className="error-text">{ renderErrorMessage(errorMessage) }</div>
+        <div className={"error-text"}>{ renderErrorMessage(errorMessage) }</div>
 
       </div>
         
