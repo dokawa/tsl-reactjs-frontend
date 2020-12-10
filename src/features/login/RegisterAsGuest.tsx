@@ -16,11 +16,10 @@ export function RegisterAsGuest() {
 
   const registerRequest = () => { axios.post("http://localhost:8000/enter-as-guest/", params) 
   .then((res) => { 
-      let data = res.data;
       history.push('/login');
   }) 
   .catch((error) => {
-    if (error.response == undefined) {
+    if (error.response === undefined) {
       setErrorMessage([ 'Request failed: check your internet connection and try again' ])
     }
     else {

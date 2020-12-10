@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './PostList.css';
 import axios from "axios";
-import {
-  addPost,
-} from './postsSlice';
+import { addPost } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
 import './AddPostForm.css'
 
@@ -29,8 +27,8 @@ export const AddPostForm:React.FC = () => {
     }
   ).then((res) => { 
         let data = res.data;
+        console.log(data)
         dispatch(addPost(data))
-
     }) 
     .catch((err) => {
         console.log(err)

@@ -4,7 +4,7 @@ import { AddPostForm } from './features/posts/AddPostForm';
 import { Login } from './features/login/Login';
 import { Logout } from './features/login/Logout';
 import { Route } from "react-router";
-import { Navbar } from './navbar/Navbar';
+import { Navbar } from './features/navbar/Navbar';
 import { Register } from './features/login/Register';
 import { RegisterAsGuest } from './features/login/RegisterAsGuest';
 import { Guard } from './features/login/Guard';

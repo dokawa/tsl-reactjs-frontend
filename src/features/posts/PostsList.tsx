@@ -5,7 +5,6 @@ import axios from "axios";
 import { selectPosts, addPosts } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
 import useInfiniteScroll from "./useInfiniteScroll";
-import { convertCompilerOptionsFromJson } from 'typescript';
 
 
 export const PostsList = () => {
@@ -34,7 +33,9 @@ export const PostsList = () => {
           setHasNextPage(true)
       
     }) 
-    .catch((err) => {}) }
+    .catch((err) => {
+      console.log(err)
+    }) }
 
   const renderedPosts = () => {
     return(posts.map(post => (

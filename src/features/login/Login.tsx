@@ -35,7 +35,7 @@ export function Login() {
         history.push('/')
       })
       .catch((error) => {  
-        if (error.response == undefined) {
+        if (error.response === undefined) {
           setErrorMessage([ 'Request failed: check your internet connection and try again' ])
         }
         else {

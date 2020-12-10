@@ -28,8 +28,7 @@ export const postsSlice = createSlice({
     addPost: (state, action) => {
       // var joined = state.posts.concat(action.payload);
       // state.posts = joined;
-      var joined = [].concat(action.payload).concat(state.posts);
-      state.posts = joined;
+      state.posts = [].concat(action.payload).concat(state.posts);
     },
     addPosts: (state, action) => {
       state.posts = state.posts.concat(action.payload)
