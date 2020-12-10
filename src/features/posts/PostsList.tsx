@@ -26,7 +26,6 @@ export const PostsList = () => {
     .then((res) => { 
         let data = res.data;
         dispatch(addPosts(data['results']));
-        console.log(res.data)
         if (data['next'] == null) 
           setHasNextPage(false)
         else
@@ -34,7 +33,6 @@ export const PostsList = () => {
       
     }) 
     .catch((err) => {
-      console.log(err)
     }) }
 
   const renderedPosts = () => {
