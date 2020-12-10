@@ -30,8 +30,6 @@ export const AddPostForm:React.FC = () => {
   ).then((res) => { 
         let data = res.data;
         dispatch(addPost(data))
-        console.log('token' + token)
-        console.log(data);
 
     }) 
     .catch((err) => {

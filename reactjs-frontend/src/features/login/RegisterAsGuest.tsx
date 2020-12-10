@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import styles from './Login.module.css';
+import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
 
 export function RegisterAsGuest() {
 
@@ -10,16 +11,18 @@ export function RegisterAsGuest() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const [errorMessage, setErrorMessage] = useState([''])
 
 
   const registerRequest = () => { axios.post("http://localhost:8000/enter-as-guest/", params) 
   .then((res) => { 
       let data = res.data;
       history.push('/login');
-      console.log(data);
   }) 
   .catch((error) => {
-    console.log(error.response)
+    if (error.response) {
+      setErrorMessage(parseErrorMessage(error.response.data))
+    }
   }) }
 
   let params = {
@@ -58,6 +61,7 @@ export function RegisterAsGuest() {
         />
 
         <button className="register-button" type="button" onClick= { registerRequest }>Register as guest</button>
+        <div className="error-text">{ renderErrorMessage(errorMessage) }</div>
 
       </div>
         

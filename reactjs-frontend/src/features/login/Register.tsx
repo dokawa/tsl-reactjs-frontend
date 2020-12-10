@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import './Register.css';
 import styles from './Login.module.css';
+import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
 
 export function Register() {
 
@@ -13,6 +14,7 @@ export function Register() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
+    const [errorMessage, setErrorMessage] = useState([''])
 
 
     const registerRequest = () => {
@@ -20,10 +22,11 @@ export function Register() {
             .then((res) => {
                 let data = res.data;
                 history.push('/login');
-                console.log(data);
             })
-            .catch((error) => { 
-                console.log(error.response)
+            .catch((error) => {
+                if (error.response) {
+                    setErrorMessage(parseErrorMessage(error.response.data))
+                }
             })
     }
 
@@ -83,6 +86,7 @@ export function Register() {
                 />
 
                 <button className="register-button" type="button" onClick={registerRequest}>Sign up</button>
+                <div className="error-text">{renderErrorMessage(errorMessage)}</div>
 
             </div>
 

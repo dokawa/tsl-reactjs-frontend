@@ -5,6 +5,7 @@ import axios from "axios";
 import { selectPosts, addPosts } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
 import useInfiniteScroll from "./useInfiniteScroll";
+import { convertCompilerOptionsFromJson } from 'typescript';
 
 
 export const PostsList = () => {
@@ -14,9 +15,8 @@ export const PostsList = () => {
   const dispatch = useDispatch();
 
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
-  let [page, setPage] = useState(1)
-
-
+  let [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(true);
 
   const sendRequest = (page: number) => { axios.get("http://localhost:8000/?page=" + page, 
     {
@@ -27,12 +27,14 @@ export const PostsList = () => {
     .then((res) => { 
         let data = res.data;
         dispatch(addPosts(data['results']));
-        console.log(data);
+        console.log(res.data)
+        if (data['next'] == null) 
+          setHasNextPage(false)
+        else
+          setHasNextPage(true)
+      
     }) 
     .catch((err) => {}) }
-
-
-
 
   const renderedPosts = () => {
     return(posts.map(post => (
@@ -42,40 +44,24 @@ export const PostsList = () => {
       </article>
     )))
   }
-
   
   useEffect(() => { 
     sendRequest(page) 
     setPage(p => p + 1)
+    
   }, [])
-
-
-  // const listInnerRef = useRef();
-
-  // const onScroll = () => {
-  //   if (listInnerRef.current) {
-  //     const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-  //     if (scrollTop + clientHeight === scrollHeight) {
-  //       // TO SOMETHING HERE
-  //       console.log('Reached bottom')
-  //     }
-  //   }
-  // };
-
 
   function fetchMoreListItems() {
     setTimeout(() => {
-      sendRequest(page)
-      setPage(p => p + 1)
+      if (hasNextPage) {
+        sendRequest(page)
+        setPage(p => p + 1)
+      }
       setIsFetching(false);
     }, 2000);
   }
 
-
-    
-
   const posts = useSelector(selectPosts);
-
 
   return (
     <section className="posts-list">
