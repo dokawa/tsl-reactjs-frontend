@@ -10,22 +10,27 @@ import userEvent from '@testing-library/user-event';
 
 jest.mock("axios"); 
 
+let container = null;
+let store = null;
+beforeEach(() => {
+  container = document.createElement("div");
+  document.body.appendChild(container);
+
+  store = configureStore({ reducer: addPost });
+  render(
+    <Provider store={store}> // Set context
+      <AddPostForm/>
+    </Provider>
+  )
+});
+
 describe('App', () => {
 
   test('render post button', () => {
-    const store = configureStore({ reducer: addPost });
-
-    render(
-      <Provider store={store}> // Set context
-        <AddPostForm/>
-      </Provider>
-    )
-
     expect(screen.getByText('Post')).toBeInTheDocument();
   });
   
   test('add post to redux', async () => {
-    const store = configureStore({ reducer: addPost });
     const message = "Hello"
     const expectedAction = {
       type: "posts/addPost",
@@ -33,21 +38,9 @@ describe('App', () => {
     }
 
     expect(addPost(message)).toEqual(expectedAction)
-
-    // Avoid 'undefined' axios
-    const fakeResponse = { data: { token: "aaaaaaaaaaa"} }  // Avoid wrong object parse
-    await axios.post.mockResolvedValue(fakeResponse)
-
-    render(
-      <Provider store={store}> // Set context
-        <AddPostForm/>
-      </Provider>
-    )
   });
 
   test('post request', async () => {
-    const store = configureStore({ reducer: addPost });
-
     const fakeResponse = { 
       data: { 
         results:
@@ -56,17 +49,8 @@ describe('App', () => {
     } 
     await axios.post.mockResolvedValue(fakeResponse)
 
-    render(
-      <Provider store={store}> // Set context
-        <AddPostForm/>
-      </Provider>
-    )
-
     await userEvent.type(screen.getByRole('textbox'), 'Hello')
     await userEvent.click(screen.getByText('Post'))
-
-    const promise = Promise.resolve({ });
-    await act(() => promise);
 
     expect(axios.post).toHaveBeenCalledTimes(1);
     expect(axios.post).toHaveBeenCalledWith("http://localhost:8000/", { message: 'Hello'}, { headers: { 'Authorization': 'Token null' }});
