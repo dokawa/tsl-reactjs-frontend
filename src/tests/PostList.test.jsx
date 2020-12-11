@@ -2,9 +2,8 @@ import React from 'react';
 import { act } from "react-dom/test-utils";
 import * as axios from "axios";
 import { PostsList } from '../features/posts/PostsList';
-import { clearPosts, addPost, addPosts, selectPosts } from '../features/posts/postsSlice';
 import {render, screen} from '@testing-library/react';
-import { actions, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import postsReducer from '../features/posts/postsSlice';
 
