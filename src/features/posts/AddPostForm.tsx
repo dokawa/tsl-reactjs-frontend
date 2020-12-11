@@ -27,7 +27,6 @@ export const AddPostForm:React.FC = () => {
     }
   ).then((res) => { 
         let data = res.data;
-        console.log(data)
         dispatch(addPost(data))
     }) 
     .catch((err) => {

@@ -33,6 +33,7 @@ export const PostsList = () => {
       
     }) 
     .catch((err) => {
+      console.log(err)
     }) }
 
   const renderedPosts = () => {

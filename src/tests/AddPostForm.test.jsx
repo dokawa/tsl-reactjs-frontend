@@ -23,7 +23,7 @@ describe('App', () => {
     expect(screen.getByText('Post')).toBeInTheDocument();
   });
   
-  test('add post action', () => {
+  test('add post', () => {
     const message = "Hello"
     const expectedAction = {
       type: "posts/addPost",
