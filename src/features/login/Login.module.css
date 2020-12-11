@@ -21,12 +21,12 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-.error-text div {
+.error_text div {
   color: red;
   text-align: justify;
 }
 
-button {
+.button {
   width: 100%;
   height: 2rem;
   margin: 0.5rem 0rem 0.5rem;

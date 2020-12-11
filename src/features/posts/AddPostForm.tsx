@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import './PostList.css';
 import axios from "axios";
 import { addPost } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
-import './AddPostForm.css'
+import add_post_form_styles from './AddPostForm.module.css'
+import styles from '../login/Login.module.css'
 
 // type Params = {
 //   token: String; 
@@ -35,14 +35,14 @@ export const AddPostForm:React.FC = () => {
   }
 
   return (
-    <div className="post_form">
+    <div className={add_post_form_styles.post_form}>
         <textarea
-          className="post_content"
+          className={add_post_form_styles.post_content}
           name="post_content"
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <button className="post_button" onClick= { postMessage }>Post</button>
+        <button className={styles.button} id={add_post_form_styles.post_button} onClick= { postMessage }>Post</button>
     </div>
   )
 }

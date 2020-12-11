@@ -62,8 +62,8 @@ export function RegisterAsGuest() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button className="register-button" type="button" onClick= { registerRequest }>Register as guest</button>
-        <div className={"error-text"}>{ renderErrorMessage(errorMessage) }</div>
+        <button className={styles.button} onClick= { registerRequest }>Register as guest</button>
+        <div className={styles.error_text}>{ renderErrorMessage(errorMessage) }</div>
 
       </div>
         

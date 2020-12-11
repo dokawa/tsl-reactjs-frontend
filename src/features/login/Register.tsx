@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import './Register.css';
+import register_styles from './Register.module.css';
 import styles from './Login.module.css';
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
 
@@ -55,7 +55,7 @@ export function Register() {
                 <div className="names">
                     <input
                         type="text"
-                        id="first_name"
+                        id={register_styles.first_name}
                         name="first_name"
                         placeholder="first name"
                         onChange={e => setFirstName(e.target.value)}
@@ -64,7 +64,7 @@ export function Register() {
 
                     <input
                         type="text"
-                        id="last_name"
+                        id={register_styles.second_name}
                         name="last_name"
                         placeholder="last name"
                         onChange={e => setLastName(e.target.value)}
@@ -87,8 +87,8 @@ export function Register() {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <button className="register-button" type="button" onClick={registerRequest}>Sign up</button>
-                <div className="error-text">{renderErrorMessage(errorMessage)}</div>
+                <button className={styles.button} onClick={registerRequest}>Sign up</button>
+                <div className={styles.error_text}>{renderErrorMessage(errorMessage)}</div>
 
             </div>
 

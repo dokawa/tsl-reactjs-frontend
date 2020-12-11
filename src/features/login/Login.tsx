@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
-import './Login.module.css';
+// import './Login.module.css';
 import { setToken } from './TokenStorage';
 import axios from "axios";
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
@@ -64,10 +64,10 @@ export function Login() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button className="login-button" type="button" onClick={sendRequest}>Login</button>
-        <button className="register-button" type="button" onClick={gotoRegisterPage}>Sign up</button>
-        <button className="register-guest-button" type="button" onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
-        <div className="error-text">{ renderErrorMessage(errorMessage) }</div>
+        <button className={styles.button} onClick={sendRequest}>Login</button>
+        <button className={styles.button} onClick={gotoRegisterPage}>Sign up</button>
+        <button className={styles.button} onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
+        <div className={styles.error_text}>{ renderErrorMessage(errorMessage) }</div>
 
       </div>
 

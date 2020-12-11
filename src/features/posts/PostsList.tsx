@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './PostList.css';
+import styles from './PostList.module.css';
 import axios from "axios";
 import { selectPosts, addPosts } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
@@ -38,9 +38,9 @@ export const PostsList = () => {
 
   const renderedPosts = () => {
     return(posts.map(post => (
-      <article className="post-excerpt" key={post.id}>
-        <div className="post-username">{post.owner}</div>
-        <div className="post-content">{post.message}</div>
+      <article className={styles.post_excerpt} key={post.id}>
+        <div className={styles.post_username}>{post.owner}</div>
+        <div className={styles.post_content}>{post.message}</div>
       </article>
     )))
   }

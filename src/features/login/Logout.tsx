@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { destroyToken } from './TokenStorage';
 import { clearPosts } from '../posts/postsSlice';
-import './Logout.css';
+import styles from './Logout.module.css';
 
 
 export function Logout() {
@@ -18,8 +18,8 @@ export function Logout() {
     }
 
     return (
-        <div className="button-container">
-            <div className="logout-button" onClick={gotoLoginPage}>Logout</div>
+        <div className={styles.button_container}>
+            <div className={styles.logout_button} onClick={gotoLoginPage}>Logout</div>
         </div>
     );
 }
