@@ -52,10 +52,10 @@ export function Register() {
                     onChange={e => setUsername(e.target.value)}
                 />
 
-                <div className="names">
+                <div className={register_styles.names}>
                     <input
+                        className={register_styles.first_name}
                         type="text"
-                        id={register_styles.first_name}
                         name="first_name"
                         placeholder="first name"
                         onChange={e => setFirstName(e.target.value)}
@@ -63,8 +63,8 @@ export function Register() {
 
 
                     <input
+                        className={register_styles.second_name}
                         type="text"
-                        id={register_styles.second_name}
                         name="last_name"
                         placeholder="last name"
                         onChange={e => setLastName(e.target.value)}
