@@ -12,7 +12,7 @@ jest.mock("axios");
 
 let store = null;
 
-beforeEach(() => {
+beforeEach(async () => {
   store = configureStore({ reducer: {
       posts: postsReducer
     },

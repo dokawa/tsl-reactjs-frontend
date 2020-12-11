@@ -1,11 +1,10 @@
 import React from 'react';
-import { act } from "react-dom/test-utils";
 import * as axios from "axios";
 import { AddPostForm } from '../features/posts/AddPostForm';
-import { clearPosts, addPost, addPosts, selectPosts } from '../features/posts/postsSlice';
-import {render, fireEvent, screen} from '@testing-library/react';
-import { actions, configureStore } from '@reduxjs/toolkit';
-import { Provider, useSelector } from 'react-redux';
+import { addPost } from '../features/posts/postsSlice';
+import {render, screen} from '@testing-library/react';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
 
 jest.mock("axios"); 
