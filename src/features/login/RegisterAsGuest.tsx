@@ -14,7 +14,7 @@ export function RegisterAsGuest() {
   const [errorMessage, setErrorMessage] = useState([''])
 
 
-  const registerRequest = () => { axios.post("http://localhost:8000/enter-as-guest/", params) 
+  const registerRequest = () => { axios.post("http://localhost:8000/register-as-guest/", params) 
   .then((res) => { 
       history.push('/login');
   }) 

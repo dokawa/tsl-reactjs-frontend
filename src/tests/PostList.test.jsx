@@ -34,7 +34,7 @@ describe('App', () => {
       </Provider>
     )
 
-    const promise = Promise.resolve({ fakeResponse });
+    const promise = Promise.resolve({ });
     await act(() => promise);
 
     expect(screen.getByText('Hi')).toBeInTheDocument();

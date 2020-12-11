@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch,
 } from 'react-router-dom';
-import './App.css';
+import styles from './App.module.css';
 
 
 import { RouterManager } from './RouterManager';
@@ -10,7 +10,7 @@ import { RouterManager } from './RouterManager';
 function App() {
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Router>
         <Switch>
           <RouterManager/>

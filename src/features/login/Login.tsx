@@ -22,6 +22,10 @@ export function Login() {
     history.push('/register-as-guest');
   }
 
+  const gotoLoginPage = () => {
+    history.push('/');
+  }
+
   let params = {
     username: username,
     password: password
@@ -32,9 +36,10 @@ export function Login() {
       .then((res) => {
         let data = res.data;
         setToken(data['token']);
-        history.push('/')
+        gotoLoginPage();
       })
       .catch((error) => {  
+        console.log(error)
         if (error.response === undefined) {
           setErrorMessage([ 'Request failed: check your internet connection and try again' ])
         }
