@@ -10,9 +10,18 @@ import postsReducer from '../features/posts/postsSlice';
 
 jest.mock("axios"); 
 
+let store = null;
+
+beforeEach(() => {
+  store = configureStore({ reducer: {
+      posts: postsReducer
+    },
+  });
+});
+
 describe('App', () => {
 
-  test('render post button', async () => {
+  test('render post list requet', async () => {
     const fakeResponse = {
       data: { 
         results:
@@ -21,12 +30,6 @@ describe('App', () => {
     }
     
     await axios.get.mockResolvedValue(fakeResponse)
-
-    const store = configureStore({ 
-      reducer: {
-        posts: postsReducer
-      },
-    });
     
     render(
       <Provider store={store}> // Set context
@@ -34,7 +37,7 @@ describe('App', () => {
       </Provider>
     )
 
-    const promise = Promise.resolve({ });
+    const promise = Promise.resolve();
     await act(() => promise);
 
     expect(screen.getByText('Hi')).toBeInTheDocument();

@@ -10,18 +10,19 @@ import userEvent from '@testing-library/user-event';
 
 jest.mock("axios"); 
 
-let container = null;
 let store = null;
-beforeEach(() => {
-  container = document.createElement("div");
-  document.body.appendChild(container);
 
+beforeEach(() => {
   store = configureStore({ reducer: addPost });
   render(
     <Provider store={store}> // Set context
       <AddPostForm/>
     </Provider>
   )
+});
+
+afterEach(() => {
+
 });
 
 describe('App', () => {
@@ -44,7 +45,7 @@ describe('App', () => {
     const fakeResponse = { 
       data: { 
         results:
-          [ { id:"2", owner: "test2", message: "Hello" } ]
+          [ { id:"1", owner: "test", message: "Hello" } ]
       } 
     } 
     await axios.post.mockResolvedValue(fakeResponse)
