@@ -20,10 +20,6 @@ beforeEach(() => {
   )
 });
 
-afterEach(() => {
-
-});
-
 describe('App', () => {
 
   test('render post button', () => {

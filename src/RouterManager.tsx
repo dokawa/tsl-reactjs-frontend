@@ -18,7 +18,6 @@ export const RouterManager:React.FC = () => {
             <Guard>
               <Route exact path="/" render={() => (
                   <React.Fragment>
-                    <Logout/>
                     <AddPostForm/>
                     <PostsList/>
                   </React.Fragment>

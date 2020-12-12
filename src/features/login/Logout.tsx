@@ -3,10 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { destroyToken } from './TokenStorage';
 import { clearPosts } from '../posts/postsSlice';
+import { getToken } from './TokenStorage';
 import styles from './Logout.module.css';
 
 
 export function Logout() {
+    let isLogged = !(getToken() === '' || getToken() === null) 
 
     const dispatch = useDispatch();
     const history = useHistory()
@@ -17,9 +19,14 @@ export function Logout() {
         history.push('/login');
     }
 
-    return (
-        <div className={styles.button_container}>
-            <div className={styles.logout_button} onClick={gotoLoginPage}>Logout</div>
-        </div>
-    );
+    if (isLogged) {
+        return (
+            <div className={styles.button_container}>
+                <div className={styles.logout_button} onClick={gotoLoginPage}>Logout</div>
+            </div>
+        );
+    }
+    else {
+        return(<></>);
+    }
 }

@@ -3,6 +3,7 @@ import styles from './Navbar.module.css';
 import { Logout } from '../login/Logout'
 
 export const Navbar = () => {
+
   return (
     <nav>
       <section>
@@ -10,7 +11,7 @@ export const Navbar = () => {
 
         <div className={styles.nav_content}>
           <div className={styles.nav_links}></div>
-          <Logout />
+           <Logout />
         </div>
       </section>
     </nav>
