@@ -2,17 +2,18 @@ import React from 'react';
 import { act } from "react-dom/test-utils";
 import * as axios from "axios";
 import { PostsList } from '../features/posts/PostsList';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import postsReducer from '../features/posts/postsSlice';
 
-jest.mock("axios"); 
+jest.mock("axios");
 
 let store = null;
 
 beforeEach(async () => {
-  store = configureStore({ reducer: {
+  store = configureStore({
+    reducer: {
       posts: postsReducer
     },
   });
@@ -22,17 +23,17 @@ describe('App', () => {
 
   test('render post list requet', async () => {
     const fakeResponse = {
-      data: { 
+      data: {
         results:
-          [{ id:"1", owner: "test1", message: "Hi" }, { id:"2", owner: "test2", message: "Hello" } ]
+          [{ id: "1", owner: "test1", message: "Hi" }, { id: "2", owner: "test2", message: "Hello" }]
       }
     }
-    
+
     await axios.get.mockResolvedValue(fakeResponse)
-    
+
     render(
       <Provider store={store}> // Set context
-        <PostsList/>
+        <PostsList />
       </Provider>
     )
 
@@ -42,5 +43,5 @@ describe('App', () => {
     expect(screen.getByText('Hi')).toBeInTheDocument();
     expect(screen.getByText('Hello')).toBeInTheDocument();
   });
-  
+
 });

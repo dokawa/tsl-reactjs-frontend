@@ -4,22 +4,22 @@ import { Register } from '../features/login/Register';
 import { RegisterAsGuest } from '../features/login/RegisterAsGuest';
 import { act } from "react-dom/test-utils";
 import * as axios from "axios";
-import {render, fireEvent, screen} from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
-jest.mock("axios"); 
+jest.mock("axios");
 
 describe('App', () => {
   test('render login error message', async () => {
-    render(<Login/>);
+    render(<Login />);
 
     expect(screen.getByText('Login')).toBeInTheDocument();
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          username:	[ "This field may not be blank." ],
-          password:	[ "This field may not be blank." ]
-        } 
+          username: ["This field may not be blank."],
+          password: ["This field may not be blank."]
+        }
       }
     }
 
@@ -34,17 +34,17 @@ describe('App', () => {
   });
 
   test('render register error message', async () => {
-    render(<Register/>);
+    render(<Register />);
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          username:	[ "This field may not be blank." ],
-          email:	[ "This field may not be blank." ],
-          password:	[ "This field may not be blank." ],
-          first_name: [ "This field may not be blank." ],
-          last_name: [ "This field may not be blank." ]
-        } 
+          username: ["This field may not be blank."],
+          email: ["This field may not be blank."],
+          password: ["This field may not be blank."],
+          first_name: ["This field may not be blank."],
+          last_name: ["This field may not be blank."]
+        }
       }
     }
 
@@ -62,15 +62,15 @@ describe('App', () => {
   });
 
   test('render register as guest error message', async () => {
-    render(<RegisterAsGuest/>);
+    render(<RegisterAsGuest />);
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          username:	[ "This field may not be blank." ],
-          email:	[ "This field may not be blank." ],
-          password:	[ "This field may not be blank." ]
-        } 
+          username: ["This field may not be blank."],
+          email: ["This field may not be blank."],
+          password: ["This field may not be blank."]
+        }
       }
     }
 
@@ -85,13 +85,13 @@ describe('App', () => {
     expect(screen.getByText('Password: this field may not be blank')).toBeInTheDocument();
   });
 
-  test('render wrong credentials message', async() => {
-    render(<Login/>);
+  test('render wrong credentials message', async () => {
+    render(<Login />);
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          non_field_errors:	[ "Unable to log in with provided credentials." ]
+          non_field_errors: ["Unable to log in with provided credentials."]
         }
       }
     }
@@ -106,15 +106,15 @@ describe('App', () => {
   });
 
   test('render register as guest error message', async () => {
-    render(<RegisterAsGuest/>);
+    render(<RegisterAsGuest />);
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          username:	[ "This field may not be blank." ],
-          email:	[ "This field may not be blank." ],
-          password:	[ "This field may not be blank." ]
-        } 
+          username: ["This field may not be blank."],
+          email: ["This field may not be blank."],
+          password: ["This field may not be blank."]
+        }
       }
     }
 
@@ -129,13 +129,13 @@ describe('App', () => {
     expect(screen.getByText('Password: this field may not be blank')).toBeInTheDocument();
   });
 
-  test('render invalid email address message', async() => {
-    render(<RegisterAsGuest/>);
+  test('render invalid email address message', async () => {
+    render(<RegisterAsGuest />);
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          email:	[ "Enter a valid email address." ]
+          email: ["Enter a valid email address."]
         }
       }
     }
@@ -149,13 +149,13 @@ describe('App', () => {
     expect(screen.getByText('Email: enter a valid email address')).toBeInTheDocument();
   });
 
-  test(`render username already exist message`, async() => {
-    render(<Register/>);
+  test(`render username already exist message`, async () => {
+    render(<Register />);
 
     const fakeResponse = {
-      response: { 
+      response: {
         data: {
-          username:	[ "A user with that username already exists." ]
+          username: ["A user with that username already exists."]
         }
       }
     }

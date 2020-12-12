@@ -13,10 +13,10 @@ function App() {
     <div className={styles.App}>
       <Router>
         <Switch>
-          <RouterManager/>
+          <RouterManager />
         </Switch>
       </Router>
-      
+
     </div>
   )
 }

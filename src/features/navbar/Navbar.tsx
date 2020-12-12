@@ -1,5 +1,6 @@
 import React from 'react'
-import './Navbar.css';
+import styles from './Navbar.module.css';
+import { Logout } from '../login/Logout'
 
 export const Navbar = () => {
   return (
@@ -7,8 +8,9 @@ export const Navbar = () => {
       <section>
         <h1>Wall App</h1>
 
-        <div className="navContent">
-          <div className="navLinks"></div>
+        <div className={styles.nav_content}>
+          <div className={styles.nav_links}></div>
+          <Logout />
         </div>
       </section>
     </nav>

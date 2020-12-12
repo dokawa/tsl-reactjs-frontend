@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
-// import './Login.module.css';
 import { setToken } from './TokenStorage';
 import axios from "axios";
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
@@ -38,10 +37,10 @@ export function Login() {
         setToken(data['token']);
         gotoLoginPage();
       })
-      .catch((error) => {  
+      .catch((error) => {
         console.log(error)
         if (error.response === undefined) {
-          setErrorMessage([ 'Request failed: check your internet connection and try again' ])
+          setErrorMessage(['Request failed: check your internet connection and try again'])
         }
         else {
           setErrorMessage(parseErrorMessage(error.response.data))
@@ -72,7 +71,7 @@ export function Login() {
         <button className={styles.button} onClick={sendRequest}>Login</button>
         <button className={styles.button} onClick={gotoRegisterPage}>Sign up</button>
         <button className={styles.button} onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
-        <div className={styles.error_text}>{ renderErrorMessage(errorMessage) }</div>
+        <div className={styles.error_text}>{renderErrorMessage(errorMessage)}</div>
 
       </div>
 
