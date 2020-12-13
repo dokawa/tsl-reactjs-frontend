@@ -1,5 +1,3 @@
-import { render } from '@testing-library/react';
-// import { Login } from './Login';
 import { SidePanel } from './SidePanel';
 import styles from './LoginPanel.module.css';
 
