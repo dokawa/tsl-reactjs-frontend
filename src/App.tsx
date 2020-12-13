@@ -8,7 +8,6 @@ import styles from './App.module.css';
 import { RouterManager } from './RouterManager';
 
 function App() {
-
   return (
     <div className={styles.App_root}>
       <div className={styles.App}>

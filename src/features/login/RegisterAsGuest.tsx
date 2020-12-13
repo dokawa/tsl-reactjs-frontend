@@ -15,7 +15,7 @@ export const RegisterAsGuest: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState([''])
 
 
-  const registerRequest = () => { axios.post("http://localhost:8000/register-as-guest/", params) 
+  const registerRequest = () => { axios.post(process.env.REACT_APP_BACKEND_HOST + "/register-as-guest/", params) 
   .then((res) => { 
       history.push('/login');
   }) 

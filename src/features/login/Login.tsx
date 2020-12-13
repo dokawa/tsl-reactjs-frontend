@@ -32,7 +32,8 @@ export const Login: React.FC = () => {
   }
 
   const sendRequest = () => {
-    axios.post("http://localhost:8000/token/", params)
+    console.log(process.cwd());
+    axios.post(process.env.REACT_APP_BACKEND_HOST + "/token/", params)
       .then((res) => {
         let data = res.data;
         setToken(data['token']);

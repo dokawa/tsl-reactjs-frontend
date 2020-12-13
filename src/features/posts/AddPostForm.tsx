@@ -6,18 +6,13 @@ import { getToken } from '../login/TokenStorage';
 import styles from './AddPostForm.module.css'
 import form_styles from '../login/Form.module.css'
 
-// type Params = {
-//   token: String; 
-//   message: String;
-// }
-
 export const AddPostForm:React.FC = () => {
   const token = getToken()
   const dispatch = useDispatch();
 
   const [content, setContent] = useState('')
 
-  const postMessage = () => { axios.post("http://localhost:8000/", {   
+  const postMessage = () => { axios.post(process.env.REACT_APP_BACKEND_HOST + '/' , {   
     message: content 
     },
     {
