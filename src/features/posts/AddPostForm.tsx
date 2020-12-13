@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import axios from "axios";
 import { addPost } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
-import add_post_form_styles from './AddPostForm.module.css'
-import styles from '../login/Login.module.css'
+import styles from './AddPostForm.module.css'
+import form_styles from '../login/Form.module.css'
 
 // type Params = {
 //   token: String; 
@@ -35,14 +35,14 @@ export const AddPostForm:React.FC = () => {
   }
 
   return (
-    <div className={add_post_form_styles.post_form}>
+    <div className={styles.post_form}>
         <textarea
-          className={add_post_form_styles.post_content}
+          className={styles.post_content}
           name="post_content"
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <button className={styles.button} id={add_post_form_styles.post_button} onClick= { postMessage }>Post</button>
+        <button className={form_styles.button} id={styles.post_button} onClick= { postMessage }>Post</button>
     </div>
   )
 }
