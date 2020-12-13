@@ -7,7 +7,7 @@ import { getToken } from './TokenStorage';
 import styles from './Logout.module.css';
 
 
-export function Logout() {
+export const Logout: React.FC = () => {
     let isLogged = !(getToken() === '' || getToken() === null) 
 
     const dispatch = useDispatch();

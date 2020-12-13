@@ -1,0 +1,5 @@
+.login_panel_container {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+}

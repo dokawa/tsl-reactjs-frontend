@@ -1,12 +1,29 @@
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    background-color:white;
+    padding: 3rem;
+}
+
+.register_container {
+    width: 50%;
+}
+
 .names {
     display: inline-flex;
-    width: 100%;
+    width: 99%;
 }
 
 .first_name {
     margin-right: 0.1rem;
+    width: 50%;
 }
 
 .second_name {
     margin-right: 0.1rem;
+    width: 50%;
 }

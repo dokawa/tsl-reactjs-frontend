@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Navbar.module.css';
 import { Logout } from '../login/Logout'
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
 
   return (
     <nav>

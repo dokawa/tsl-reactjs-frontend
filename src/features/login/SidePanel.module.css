@@ -1,0 +1,18 @@
+.panel_container {
+    width: 50%;
+}
+
+.panel {
+    height: 100%;
+    background-color: #28A2D1;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.panel_app_name {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}

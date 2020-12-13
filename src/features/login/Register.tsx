@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import register_styles from './Register.module.css';
-import styles from './Login.module.css';
+import styles from './Register.module.css';
+import form_styles from './Form.module.css';
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
 
-export function Register() {
+export const Register: React.FC = () => {
 
     const history = useHistory()
 
@@ -41,10 +41,11 @@ export function Register() {
     }
 
     return (
-        <div>
+        <div className={styles.register_container}>
             <div className={styles.row}>
 
                 <input
+                    className={styles.username_input}
                     type="text"
                     id="username"
                     name="username"
@@ -52,9 +53,9 @@ export function Register() {
                     onChange={e => setUsername(e.target.value)}
                 />
 
-                <div className={register_styles.names}>
+                <div className={styles.names}>
                     <input
-                        className={register_styles.first_name}
+                        className={styles.first_name}
                         type="text"
                         name="first_name"
                         placeholder="first name"
@@ -63,7 +64,7 @@ export function Register() {
 
 
                     <input
-                        className={register_styles.second_name}
+                        className={styles.second_name}
                         type="text"
                         name="last_name"
                         placeholder="last name"
@@ -87,8 +88,8 @@ export function Register() {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <button className={styles.button} onClick={registerRequest}>Sign up</button>
-                <div className={styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+                <button className={form_styles.button} onClick={registerRequest}>Sign up</button>
+                <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
 
             </div>
 

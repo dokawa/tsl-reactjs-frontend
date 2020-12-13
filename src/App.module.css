@@ -1,6 +1,8 @@
 :root {
   background-image: url("./wall.jpg");
   background-size: initial;
+  height: 100%;
+  margin: auto;
 }
 
 .App {
@@ -9,13 +11,9 @@
   background-color: white;
 }
 
-.App-header {
-  min-height: 100vh;
+.App_root {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
 .App-link {

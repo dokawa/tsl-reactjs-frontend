@@ -7,7 +7,7 @@ import { getToken } from '../login/TokenStorage';
 import useInfiniteScroll from "./useInfiniteScroll";
 
 
-export const PostsList = () => {
+export const PostsList: React.FC = () => {
 
   const token = getToken();
 

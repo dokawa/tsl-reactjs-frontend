@@ -10,13 +10,14 @@ import { RouterManager } from './RouterManager';
 function App() {
 
   return (
-    <div className={styles.App}>
-      <Router>
-        <Switch>
-          <RouterManager />
-        </Switch>
-      </Router>
-
+    <div className={styles.App_root}>
+      <div className={styles.App}>
+        <Router>
+          <Switch>
+            <RouterManager />
+          </Switch>
+        </Router>
+      </div>
     </div>
   )
 }

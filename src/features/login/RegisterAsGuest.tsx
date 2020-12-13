@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import styles from './Login.module.css';
+import form_styles from './Form.module.css';
+import styles from './Register.module.css';
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
 
-export function RegisterAsGuest() {
+export const RegisterAsGuest: React.FC = () => {
 
   const history = useHistory()
 
@@ -34,7 +35,7 @@ export function RegisterAsGuest() {
   }
 
   return (
-    <div>
+    <div className={styles.register_container}>
       <div className={styles.row}>
       
         <input
@@ -62,11 +63,9 @@ export function RegisterAsGuest() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button className={styles.button} onClick= { registerRequest }>Register as guest</button>
-        <div className={styles.error_text}>{ renderErrorMessage(errorMessage) }</div>
-
+        <button className={form_styles.button} onClick= { registerRequest }>Register as guest</button>
+        <div className={form_styles.error_text}>{ renderErrorMessage(errorMessage) }</div>
       </div>
-        
     </div>
   );
 }

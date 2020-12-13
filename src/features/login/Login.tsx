@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
+import form_styles from './Form.module.css';
 import { setToken } from './TokenStorage';
 import axios from "axios";
 import { parseErrorMessage, renderErrorMessage } from './parseErrorMessage'
 
-export function Login() {
+export const Login: React.FC = () => {
 
   const history = useHistory()
 
@@ -49,7 +50,7 @@ export function Login() {
   }
 
   return (
-    <div>
+    <div className={styles.login_container}>
       <div className={styles.row}>
 
         <input
@@ -68,10 +69,10 @@ export function Login() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button className={styles.button} onClick={sendRequest}>Login</button>
-        <button className={styles.button} onClick={gotoRegisterPage}>Sign up</button>
-        <button className={styles.button} onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
-        <div className={styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+        <button className={form_styles.button} onClick={sendRequest}>Login</button>
+        <button className={form_styles.button} onClick={gotoRegisterPage}>Sign up</button>
+        <button className={form_styles.button} onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
+        <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
 
       </div>
 
