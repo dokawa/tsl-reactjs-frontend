@@ -38,9 +38,9 @@ export const Login: React.FC = () => {
         let data = res.data;
         setToken(data['token']);
         gotoLoginPage();
+        console.log(data['token'])
       })
       .catch((error) => {
-        console.log(error)
         if (error.response === undefined) {
           setErrorMessage(['Request failed: check your internet connection and try again'])
         }

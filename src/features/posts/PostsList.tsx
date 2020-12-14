@@ -18,7 +18,7 @@ export const PostsList: React.FC = () => {
   const [hasNextPage, setHasNextPage] = useState(true);
 
   const sendRequest = (page: number) => {
-    axios.get("http://localhost:8000/?page=" + page,
+    axios.get(process.env.REACT_APP_BACKEND_HOST + "/?page=" + page,
       {
         headers: {
           'Authorization': `Token ${token}`
