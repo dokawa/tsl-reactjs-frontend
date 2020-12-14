@@ -2,9 +2,13 @@
 
 ### Prerequisites
 
-This project requires [Nodejs](https://nodejs.org/en/) with the package [npm](https://github.com/npm/cli/releases/) installed.
+This project requires [Nodejs](https://nodejs.org/en/) with the package [npm](https://github.com/npm/cli/releases/) installed
 
 Make sure that the [backend application is running](https://github.com/dokawa/tsl-django-rest-backend)
+
+The project is also hosted in [Heroku](https://tsl-react-frontend.herokuapp.com/)
+
+ATTENTION: the hosted version does not send e-mails due to restrictions on Gmail (it could be corrected with a production e-mail service) the local version send it as requested in the assignment
 
 
 ### Installing
@@ -40,6 +44,7 @@ npm run test
 
 * Given the non critical nature of the assignment, the authentication method
 is simple and overall effective, but not the most secure
+* The .env file is included in the repository in favor of simplicity to run the assignment
 
 ### Future work
 
