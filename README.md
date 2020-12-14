@@ -40,6 +40,11 @@ npm start
 npm run test
 ```
 
+### This app was build with
+
+[Nodejs](https://nodejs.org/en/)
+[React Redux](https://react-redux.js.org/)
+
 ### Considerations
 
 * Given the non critical nature of the assignment, the authentication method
@@ -51,3 +56,4 @@ is simple and overall effective, but not the most secure
 * The use of socket for automatic update of changes from the server (e.g. new message posted)
 * More secure authentication method like OAuth 2.0
 * Support for posting images, videos and urls
+

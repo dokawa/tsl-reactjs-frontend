@@ -20,40 +20,35 @@ export const Register: React.FC = () => {
     const registerRequest = () => {
         axios.post(process.env.REACT_APP_BACKEND_HOST + "/register/", params)
             .then((res) => {
-                if (res.status === 420) {
-                    setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
-                    wait(); 
-                  }
                 history.push('/login');
             })
             .catch((error) => {
                 if (error.response === undefined) {
                     setErrorMessage(['Request failed: check your internet connection and try again'])
-                  }
-                  else if (error.response.status === 420) {
+                }
+                else if (error.response.status === 420) {
                     setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
-                    wait();
                     history.push('/login');
-                  }
-                  else if (error.response.status === 500) {
+                }
+                else if (error.response.status === 500) {
                     setErrorMessage(['Internal server error'])
-                  }
-                  else if (error.response.status !== 500) {
+                }
+                else if (error.response.status !== 500) {
                     setErrorMessage(parseErrorMessage(error.response.data))
-                  }
+                }
             })
     }
 
     const sleep = (milliseconds: number) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
-      }
-    
-      async function wait(){ //must be async func
+    }
+
+    async function wait() { //must be async func
         //do something here
         await sleep(2000) //wait 5 seconds
         //continue on...
-      }
-    
+    }
+
 
     let params = {
         username: username,
