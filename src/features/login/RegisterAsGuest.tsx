@@ -18,11 +18,6 @@ export const RegisterAsGuest: React.FC = () => {
   const registerRequest = () => {
     axios.post(process.env.REACT_APP_BACKEND_HOST + "/register-as-guest/", params)
       .then((res) => {
-        if (res.data['success'] === true) {
-          setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
-          console.log('waited')
-          wait()
-        }
         history.push('/login');
       })
       .catch((error) => {
@@ -31,7 +26,7 @@ export const RegisterAsGuest: React.FC = () => {
         }
         else if (error.response.status === 420) {
           setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
-          history.push('/login');
+          setTimeout(() => {  history.push('/login');; }, 4000);
         }
         else if (error.response.status === 500) {
           setErrorMessage(['Internal server error'])
@@ -40,16 +35,6 @@ export const RegisterAsGuest: React.FC = () => {
           setErrorMessage(parseErrorMessage(error.response.data))
         }
       })
-  }
-
-  const sleep = (milliseconds: number) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
-
-  async function wait() { //must be async func
-    //do something here
-    await sleep(2000) //wait 5 seconds
-    //continue on...
   }
 
   let params = {

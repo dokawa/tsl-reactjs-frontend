@@ -28,7 +28,7 @@ export const Register: React.FC = () => {
                 }
                 else if (error.response.status === 420) {
                     setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
-                    history.push('/login');
+                    setTimeout(() => {  history.push('/login');; }, 4000);
                 }
                 else if (error.response.status === 500) {
                     setErrorMessage(['Internal server error'])
