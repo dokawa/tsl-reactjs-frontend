@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './PostList.module.css';
 import axios from "axios";
-import { selectPosts, addPosts } from './postsSlice';
+import { selectPosts, setPosts, addPosts } from './postsSlice';
 import { getToken } from '../login/TokenStorage';
 import useInfiniteScroll from "./useInfiniteScroll";
 
@@ -17,7 +17,7 @@ export const PostsList: React.FC = () => {
   let [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-  const sendRequest = (page: number) => {
+  const sendRequest = (page: number, first: boolean) => {
     axios.get(process.env.REACT_APP_BACKEND_HOST + "/?page=" + page,
       {
         headers: {
@@ -26,7 +26,13 @@ export const PostsList: React.FC = () => {
       })
     .then((res) => {
       let data = res.data;
-      dispatch(addPosts(data['results']));
+      if (first) {
+        dispatch(setPosts(data['results']));
+      }
+      else {
+        dispatch(addPosts(data['results']));
+      }
+
       if (data['next'] == null)
         setHasNextPage(false)
       else
@@ -48,7 +54,7 @@ export const PostsList: React.FC = () => {
   }
 
   useEffect(() => {
-    sendRequest(page)
+    sendRequest(page, true)
     setPage(p => p + 1)
 
   }, [])
@@ -56,7 +62,7 @@ export const PostsList: React.FC = () => {
   function fetchMoreListItems() {
     setTimeout(() => {
       if (hasNextPage) {
-        sendRequest(page)
+        sendRequest(page, false)
         setPage(p => p + 1)
       }
       setIsFetching(false);

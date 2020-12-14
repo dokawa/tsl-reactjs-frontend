@@ -18,6 +18,11 @@ export const postsSlice = createSlice({
     posts: []
   },
   reducers: {
+    setPosts: (state, action) => {
+      // var joined = state.posts.concat(action.payload);
+      // state.posts = joined;
+      state.posts = action.payload
+    },
     clearPosts: state => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
@@ -36,7 +41,7 @@ export const postsSlice = createSlice({
   },
 });
 
-export const { clearPosts, addPost, addPosts } = postsSlice.actions;
+export const { setPosts, clearPosts, addPost, addPosts } = postsSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
