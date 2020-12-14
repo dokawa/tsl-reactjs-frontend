@@ -24,14 +24,14 @@ export const RegisterAsGuest: React.FC = () => {
       if (error.response === undefined) {
         setErrorMessage(['Request failed: check your internet connection and try again'])
       }
-      else if (error.response.status !== 500) {
-        setErrorMessage(parseErrorMessage(error.response.data))
-      }
-      else if (error.response.status !== 420) {
+      else if (error.response.status === 420) {
         setErrorMessage(['Could not send welcome mail'])
-    }
+      }
       else if (error.response.status === 500) {
         setErrorMessage(['Internal server error'])
+      }
+      else if (error.response.status !== 500) {
+        setErrorMessage(parseErrorMessage(error.response.data))
       }
     })
   }
