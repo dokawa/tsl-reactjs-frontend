@@ -1,11 +1,13 @@
 import { SidePanel } from './SidePanel';
-import styles from './LoginPanel.module.css';
+import styles from './FormPanel.module.css';
 
 export const FormPanel: React.FC = (props) => {
-    return(
-        <div className={styles.login_panel_container}>
-            <SidePanel/>
-            { props.children}
+    return (
+        <div className={styles.form_panel_container}>
+            <div className={styles.form_panel}>
+                <SidePanel/>
+                { props.children}
+            </div>
         </div>
     )
 }

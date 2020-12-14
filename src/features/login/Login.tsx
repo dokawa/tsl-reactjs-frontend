@@ -32,13 +32,11 @@ export const Login: React.FC = () => {
   }
 
   const sendRequest = () => {
-    console.log(process.cwd());
     axios.post(process.env.REACT_APP_BACKEND_HOST + "/token/", params)
       .then((res) => {
         let data = res.data;
         setToken(data['token']);
         gotoLoginPage();
-        console.log(data['token'])
       })
       .catch((error) => {
         if (error.response === undefined) {
@@ -53,28 +51,28 @@ export const Login: React.FC = () => {
   return (
     <div className={styles.login_container}>
       <div className={styles.row}>
+        <div className={styles.input_container}>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="username"
+            onChange={e => setUsername(e.target.value)}
+          />
 
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="username"
-          onChange={e => setUsername(e.target.value)}
-        />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+            onChange={e => setPassword(e.target.value)}
+          />
 
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="password"
-          onChange={e => setPassword(e.target.value)}
-        />
-
-        <button className={form_styles.button} onClick={sendRequest}>Login</button>
-        <button className={form_styles.button} onClick={gotoRegisterPage}>Sign up</button>
-        <button className={form_styles.button} onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
-        <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
-
+          <button className={form_styles.button} onClick={sendRequest}>Login</button>
+          <button className={form_styles.button} onClick={gotoRegisterPage}>Sign up</button>
+          <button className={form_styles.button} onClick={gotoRegisterAsGuestPage}>Enter as guest</button>
+          <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+        </div>
       </div>
 
     </div>

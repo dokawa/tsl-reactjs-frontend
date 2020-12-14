@@ -39,17 +39,6 @@ export const Register: React.FC = () => {
             })
     }
 
-    const sleep = (milliseconds: number) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
-
-    async function wait() { //must be async func
-        //do something here
-        await sleep(2000) //wait 5 seconds
-        //continue on...
-    }
-
-
     let params = {
         username: username,
         email: email,

@@ -8,11 +8,12 @@ import { Navbar } from './features/navbar/Navbar';
 import { Register } from './features/login/Register';
 import { RegisterAsGuest } from './features/login/RegisterAsGuest';
 import { Guard } from './features/login/Guard';
+import style from './RouterManager.module.css';
 
 export const RouterManager: React.FC = () => {
 
   return (
-    <div>
+    <div className={style.router_manager_container}>
       <Guard>
         <Route exact path="/" render={() => (
           <React.Fragment>
