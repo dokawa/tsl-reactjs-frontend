@@ -27,6 +27,14 @@ cd tsl-reactjs-frontend
 npm install
 ```
 
+### Defining server location
+
+
+Create a file named '.env' in the project root directory with the following info
+
+```
+REACT_APP_BACKEND_HOST=http://localhost:8000
+```
 
 ### Running the application
 
@@ -49,7 +57,6 @@ npm run test
 
 * Given the non critical nature of the assignment, the authentication method
 is simple and overall effective, but not the most secure
-* The .env file is included in the repository in favor of simplicity to run the assignment
 
 ### Future work
 

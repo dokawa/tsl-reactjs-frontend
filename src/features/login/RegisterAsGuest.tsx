@@ -26,7 +26,7 @@ export const RegisterAsGuest: React.FC = () => {
         }
         else if (error.response.status === 420) {
           setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
-          setTimeout(() => {  history.push('/login');; }, 4000);
+          setTimeout(() => { history.push('/login');; }, 4000);
         }
         else if (error.response.status === 500) {
           setErrorMessage(['Internal server error'])
@@ -46,34 +46,35 @@ export const RegisterAsGuest: React.FC = () => {
   return (
     <div className={styles.register_container}>
       <div className={styles.row}>
+        <div className={styles.input_and_buttons_container}>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="username"
+            onChange={e => setUsername(e.target.value)}
+          />
 
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="username"
-          onChange={e => setUsername(e.target.value)}
-        />
-
-        <input
-          type="text"
-          id="e_mail"
-          name="e_mail"
-          placeholder="e-mail"
-          onChange={e => setEmail(e.target.value)}
-        />
+          <input
+            type="text"
+            id="e_mail"
+            name="e_mail"
+            placeholder="e-mail"
+            onChange={e => setEmail(e.target.value)}
+          />
 
 
-        <input
-          type="text"
-          id="password"
-          name="password"
-          placeholder="password"
-          onChange={e => setPassword(e.target.value)}
-        />
+          <input
+            type="text"
+            id="password"
+            name="password"
+            placeholder="password"
+            onChange={e => setPassword(e.target.value)}
+          />
 
-        <button className={form_styles.button} onClick={registerRequest}>Register as guest</button>
-        <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+          <button className={form_styles.button} onClick={registerRequest}>Register as guest</button>
+          <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+        </div>
       </div>
     </div>
   );

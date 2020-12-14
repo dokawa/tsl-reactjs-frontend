@@ -72,7 +72,7 @@ export const PostsList: React.FC = () => {
   const posts = useSelector(selectPosts);
 
   return (
-    <section className="posts-list">
+    <section className={styles.posts_list}>
       { renderedPosts()}
       {isFetching && 'Fetching more items...'}
     </section>

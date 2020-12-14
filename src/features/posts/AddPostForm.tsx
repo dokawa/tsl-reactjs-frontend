@@ -12,7 +12,7 @@ export const AddPostForm:React.FC = () => {
 
   const [content, setContent] = useState('')
 
-  const postMessage = () => { axios.post(process.env.REACT_APP_BACKEND_HOST + '/' , {   
+  const postMessage = () => { axios.post(process.env.REACT_APP_BACKEND_HOST + '/message/' , {   
     message: content 
     },
     {
