@@ -23,12 +23,16 @@ export const Register: React.FC = () => {
                 history.push('/login');
             })
             .catch((error) => {
+                console.log(error)
                 if (error.response === undefined) {
-                    setErrorMessage([ 'Request failed: check your internet connection and try again' ])
-                  }
-                  else {
+                    setErrorMessage(['Request failed: check your internet connection and try again'])
+                }
+                else if (error.response.status != 500) {
                     setErrorMessage(parseErrorMessage(error.response.data))
-                  }
+                }
+                else if (error.response.status == 500) {
+                    setErrorMessage(['Internal server error'])
+                }
             })
     }
 
