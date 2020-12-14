@@ -20,10 +20,10 @@ export const Register: React.FC = () => {
     const registerRequest = () => {
         axios.post(process.env.REACT_APP_BACKEND_HOST + "/register/", params)
             .then((res) => {
-                if (res.data['success'] === false) {
+                if (res.status === 420) {
                     setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
                     wait(); 
-                }
+                  }
                 history.push('/login');
             })
             .catch((error) => {

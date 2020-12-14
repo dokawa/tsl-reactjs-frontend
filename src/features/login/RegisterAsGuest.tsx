@@ -18,7 +18,8 @@ export const RegisterAsGuest: React.FC = () => {
   const registerRequest = () => {
     axios.post(process.env.REACT_APP_BACKEND_HOST + "/register-as-guest/", params)
     .then((res) => {
-      if (res.data['success'] === false) {
+      console.log(res.status)
+      if (res.status === 420) {
         setErrorMessage(['Could not send welcome mail but you can login. Redirecting to login page...'])
         wait(); 
       }
