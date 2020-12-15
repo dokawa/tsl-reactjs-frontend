@@ -10,7 +10,10 @@
     color: red;
     text-align: justify;
     font-size: 0.8rem;
-    height: 1rem;
+  }
+
+  .error_text_container {
+    height: 5rem;
   }
   
   .button {

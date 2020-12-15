@@ -96,7 +96,9 @@ export const Register: React.FC = () => {
                     />
 
                     <button className={form_styles.button} onClick={registerRequest}>Sign up</button>
-                    <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+                    <div className={form_styles.error_text_container}>
+                        <div className={form_styles.error_text}>{renderErrorMessage(errorMessage)}</div>
+                    </div>
                 </div>
             </div>
 
