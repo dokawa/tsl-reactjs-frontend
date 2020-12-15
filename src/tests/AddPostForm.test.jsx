@@ -49,7 +49,7 @@ describe('App', () => {
     await userEvent.click(screen.getByText('Post'))
 
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith("http://localhost:8000/", { message: 'Hello' }, { headers: { 'Authorization': 'Token null' } });
+    expect(axios.post).toHaveBeenCalledWith("http://localhost:8000/message/", { message: 'Hello' }, { headers: { 'Authorization': 'Token null' } });
 
   });
 });

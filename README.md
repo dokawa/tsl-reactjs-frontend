@@ -30,10 +30,10 @@ npm install
 ### Defining server location
 
 
-Create a file named '.env' in the project root directory with the following info
+Use this command to configure the '.env' file in the project root directory
 
 ```
-REACT_APP_BACKEND_HOST=http://localhost:8000
+echo REACT_APP_BACKEND_HOST=http://localhost:8000 > .env
 ```
 
 ### Running the application
