@@ -30,10 +30,10 @@ npm install
 ### Defining server location
 
 
-Use this command to configure the '.env' file in the project root directory
+Create a file '.env' in the project root directory with the following configuration
 
 ```
-echo REACT_APP_BACKEND_HOST=http://localhost:8000 > .env
+REACT_APP_BACKEND_HOST=http://localhost:8000
 ```
 
 ### Running the application
@@ -51,6 +51,7 @@ npm run test
 ### This app was build with
 
 [Nodejs](https://nodejs.org/en/)
+
 [React Redux](https://react-redux.js.org/)
 
 ### Considerations
